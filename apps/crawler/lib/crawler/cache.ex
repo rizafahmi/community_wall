@@ -25,7 +25,7 @@ defmodule Crawler.Cache do
   ### INTERNAL API
   def handle_call({:get, key}, _from, state) do
     reply =
-      case :ets.lookup(:content_cache, {:get, key}) do
+      case :ets.lookup(:content_cache, key) do
         [] -> nil
         [{_key, value}] -> value
       end

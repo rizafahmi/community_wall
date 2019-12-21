@@ -1,5 +1,14 @@
 defmodule Crawler do
+  alias Crawler.Cache
+
   def get_instagram(hashtag) do
+    case Cache.get(hashtag) do
+      [_ | _] = data -> data
+      _ -> get_data_from_api(hashtag)
+    end
+  end
+
+  defp get_data_from_api(hashtag) do
     case Mojito.request(:get, "https://www.instagram.com/explore/tags/#{hashtag}/?__a=1") do
       {:ok, %Mojito.Response{body: body}} ->
         edges = decode_body(body)
@@ -7,7 +16,9 @@ defmodule Crawler do
         texts = edges |> get_captions() |> get_texts()
         thumbnails = edges |> get_thumbnails()
 
-        combine_data(texts, thumbnails)
+        result = combine_data(texts, thumbnails)
+        Cache.put(hashtag, result)
+        result
 
       _ ->
         {:error}
