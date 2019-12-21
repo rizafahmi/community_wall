@@ -1,9 +1,13 @@
-<section class="row">
-  <article class="column">
-    <ul>
       <%= for edge <- @edges do %>
-        <li> <img src="<%= show_image(edge) %>" /> <span><%= show_text(edge) %></li>
+        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+          <img class="w-full" src="<%= show_image(edge) %>" alt="<%= show_text(edge) %>">
+          <div class="px-6 py-4">
+            <p class="text-gray-700 text-base"><%= show_text(edge) %></p>
+          </div>
+          <div class="px-6 py-4">
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#photography</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#travel</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#winter</span>
+          </div>
+        </div>
       <% end %>
-    </ul>
-  </article>
-</section>
