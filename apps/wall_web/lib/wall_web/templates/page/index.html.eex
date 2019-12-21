@@ -1,0 +1,9 @@
+<section class="row">
+  <article class="column">
+    <ul>
+      <%= for edge <- @edges do %>
+        <li> <img src="<%= show_image(edge) %>" /> <span><%= show_text(edge) %></li>
+      <% end %>
+    </ul>
+  </article>
+</section>
