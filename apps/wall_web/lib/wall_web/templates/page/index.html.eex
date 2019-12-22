@@ -1,13 +1,15 @@
-      <%= for edge <- @edges do %>
-        <div class="max-w-sm rounded overflow-hidden shadow-lg">
-          <img class="w-full" src="<%= show_image(edge) %>" alt="<%= show_text(edge) %>">
-          <div class="px-6 py-4">
-            <p class="text-gray-700 text-base"><%= show_text(edge) %></p>
-          </div>
-          <div class="px-6 py-4">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#photography</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#travel</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#winter</span>
-          </div>
+<div class="grid min-h-screen p-8 items-center justify-center">
+  <%= for edge <- @edges do %>
+    <div class="bg-white rounded-lg overflow-hidden border m-2 overflow-hidden">
+      <img class="w-full" src="<%= show_image(edge) %>" alt="<%= show_text(edge) %>">
+      <div class="p-6">
+        <p class=""><%= show_text(edge) %></p>
+        <div class="">
+          <span class="">#photography</span>
+          <span class="">#travel</span>
+          <span class="">#winter</span>
         </div>
-      <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

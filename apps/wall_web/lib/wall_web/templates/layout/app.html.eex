@@ -7,7 +7,7 @@
     <title>WallWeb · Phoenix Framework</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
-  <body>
+  <body class="bg-gray-200">
     <header>
       <nav class="flex items-center justify-between flex-wrap bg-blue-700 p-6">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
@@ -15,7 +15,7 @@
         </div>
       </nav>
     </header>
-    <main role="main" class="container mx-auto my-6">
+    <main role="main" class="container mx-auto my-6 flex">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>
