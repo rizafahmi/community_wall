@@ -45,7 +45,7 @@ defmodule Crawler.Cache do
   end
 
   def handle_info(:clear_cache, state) do
-    IO.puts("Clear some cache... Each " <> System.get_env("AUTO_REFRESH_MILISECONDS"))
+    # IO.puts("Clear some cache... Each " <> System.get_env("AUTO_REFRESH_MILISECONDS"))
     :ets.delete(:content_cache)
     :ets.new(:content_cache, [:set, :public, :named_table])
     schedule_work()
