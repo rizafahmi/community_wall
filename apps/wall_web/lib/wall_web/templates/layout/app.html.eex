@@ -4,9 +4,6 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <%= if assigns[:refresh_every] do %>
-      <meta http-equiv="refresh" content="<%= @refresh_every %>">
-    <% end %>
     <title>Community Wall with #hashtag</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
@@ -20,6 +17,9 @@
             <span class="font-semibold text-xl tracking-tight">Community Wall </span>
           <% end %>
         </div>
+        <div>
+          <button id="refresh-button" onClick="window.location.reload();" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 lg:mt-0">Refresh</button>
+        </div>
       </nav>
     </header>
     <main role="main" class="container mx-auto my-6 flex">
@@ -28,5 +28,20 @@
       <%= render @view_module, @view_template, assigns %>
     </main>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+    <%= if assigns[:refresh_every] do %>
+      <script>
+        window.setTimeout(function () {
+          const button = document.querySelector('#refresh-button');
+          button.disabled = true;
+          button.classList.add("bg-white");
+          button.classList.add("cursor-not-allowed");
+          button.classList.add("text-blue-500");
+          window.setTimeout(function () {
+            window.location.reload();
+          }, 5000);
+
+        }, <%= @refresh_every %>)
+      </script>
+    <% end %>
   </body>
 </html>
