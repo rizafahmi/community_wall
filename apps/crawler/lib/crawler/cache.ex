@@ -7,6 +7,7 @@ defmodule Crawler.Cache do
 
   def init(state) do
     :ets.new(:content_cache, [:set, :public, :named_table])
+    schedule_work()
     {:ok, state}
   end
 
@@ -41,5 +42,19 @@ defmodule Crawler.Cache do
   def handle_cast({:put, key, data}, state) do
     :ets.insert(:content_cache, {key, data})
     {:noreply, state}
+  end
+
+  def handle_info(:clear_cache, state) do
+    IO.puts("Clear some cache... Each " <> System.get_env("AUTO_REFRESH_MILISECONDS"))
+    :ets.delete(:content_cache)
+    :ets.new(:content_cache, [:set, :public, :named_table])
+    schedule_work()
+    {:noreply, state}
+  end
+
+  defp schedule_work() do
+    time = System.get_env("AUTO_REFRESH_MILISECONDS")
+    {int_time, _} = Integer.parse(time)
+    Process.send_after(self(), :clear_cache, int_time)
   end
 end
