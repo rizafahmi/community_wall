@@ -21,7 +21,7 @@ defmodule Crawler do
         result
 
       _ ->
-        {:error}
+        []
     end
   end
 
