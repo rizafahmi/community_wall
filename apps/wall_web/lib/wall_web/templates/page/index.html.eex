@@ -1,4 +1,4 @@
-<h3 class="bg-white p-6 mx-10 rounded">Kirim foto dengan teman di lokasi acara ke <span class="instagram-badge">Instagram</span> dengan hashtag <span class="hashtag">#<%= @hashtag %></h3>
+<h3 class="bg-white p-6 mx-10 rounded shadow-md instruction">Kirim foto dengan teman di lokasi acara ke <span class="instagram-badge">Instagram</span> dengan hashtag <span class="hashtag">#<%= @hashtag %></h3>
 <div class="grid min-h-screen p-8 items-center justify-center">
   <%= for edge <- @edges do %>
     <div class="bg-white rounded-lg overflow-hidden border m-2 overflow-hidden">

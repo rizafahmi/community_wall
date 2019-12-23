@@ -44,7 +44,10 @@
             window.location.reload();
           }, 5000);
 
-        }, <%= @refresh_every %>)
+        }, (<%= @refresh_every %> - 5000))
+        window.setTimeout(function () {
+          document.querySelector(".instruction").hidden = true;
+        }, 20000)
       </script>
     <% end %>
   </body>
