@@ -4,15 +4,19 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Community Wall with #hashtag</title>
+    <%= if assigns[:hashtag] do %>
+      <title>Community Wall with <%= get_title(@hashtag) %></title>
+    <% else %>
+      <title>Community Wall</title>
+    <% end %>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body class="bg-gray-200">
     <header>
-      <nav class="flex items-center justify-between flex-wrap bg-blue-700 p-6">
+      <nav class="flex items-center justify-between flex-wrap bg-blue-700 p-6 shadow-lg">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
           <%= if assigns[:hashtag] do %>
-            <span class="font-semibold text-xl tracking-tight">Community Wall <%= get_title(@hashtag) %></span>
+            <span class="font-semibold text-xl tracking-tight uppercase"><%= get_title(@hashtag) %></span>
           <% else %>
             <span class="font-semibold text-xl tracking-tight">Community Wall </span>
           <% end %>
@@ -22,7 +26,7 @@
         </div>
       </nav>
     </header>
-    <main role="main" class="container mx-auto my-6 flex">
+    <main role="main" class="container mx-auto my-6 ">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>

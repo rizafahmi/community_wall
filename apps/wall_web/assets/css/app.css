@@ -7,3 +7,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
+.instagram-badge {
+  @apply inline-block bg-pink-500 text-white text-xs px-2 rounded-full uppercase py-1;
+}
+
+.hashtag {
+  @apply inline-block bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2;
+}
