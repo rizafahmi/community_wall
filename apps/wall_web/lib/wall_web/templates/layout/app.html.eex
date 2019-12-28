@@ -9,6 +9,7 @@
     <% else %>
       <title>Community Wall</title>
     <% end %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body class="bg-gray-200">
@@ -22,7 +23,7 @@
           <% end %>
         </div>
         <div>
-          <button id="refresh-button" onClick="window.location.reload();" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 lg:mt-0">Refresh</button>
+          <button id="refresh-button" onClick="window.location.reload();" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 lg:mt-0">🔄 Refresh</button>
         </div>
       </nav>
     </header>
@@ -30,6 +31,7 @@
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>
+      <a class="github-fork-ribbon right-bottom fixed" href="https://github.com/rizafahmi/community_wall" data-ribbon="Fork me on GitHub" target="_blank" ref="noopener" title="Fork me on GitHub">Fork me on GitHub</a>
     </main>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
     <%= if assigns[:refresh_every] do %>
