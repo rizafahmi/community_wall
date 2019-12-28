@@ -4,12 +4,33 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const PurgecssPlugin = require('purgecss-webpack-plugin');
+const globAll = require('glob-all');
+
+class TailwindExtractor {
+  static extract(content) {
+    return content.match(/[A-Za-z0-9-_:\/]+/g) || [];
+  }
+}
 
 module.exports = (env, options) => ({
   optimization: {
     minimizer: [
       new TerserPlugin({ cache: true, parallel: true, sourceMap: false }),
-      new OptimizeCSSAssetsPlugin({})
+      new OptimizeCSSAssetsPlugin({}),
+      new PurgecssPlugin({
+        paths: globAll.sync([
+          '../lib/wall_web/templates/**/*.html.eex',
+          '../lib/wall_web/views/**/*.ex',
+          '../assets/js/**/*.js'
+        ]),
+        extractors: [
+          {
+            extractor: TailwindExtractor,
+            extensions: ['html', 'js', 'eex', 'ex']
+          }
+        ]
+      })
     ]
   },
   entry: {

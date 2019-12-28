@@ -9,8 +9,8 @@
     <% else %>
       <title>Community Wall</title>
     <% end %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
-    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <link defer rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
+    <link defer rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body class="bg-gray-200">
     <header>
@@ -35,9 +35,9 @@
       <%= render @view_module, @view_template, assigns %>
       <a class="github-fork-ribbon right-bottom fixed" href="https://github.com/rizafahmi/community_wall" data-ribbon="Fork me on GitHub" target="_blank" ref="noopener" title="Fork me on GitHub">Fork me on GitHub</a>
     </main>
-    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+    <script async type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
     <%= if assigns[:refresh_every] do %>
-      <script>
+      <script async>
         window.setTimeout(function () {
           const button = document.querySelector('#refresh-button');
           button.disabled = true;
