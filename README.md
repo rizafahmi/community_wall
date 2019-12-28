@@ -90,3 +90,76 @@ And we use [Procfile](./Procfile).
 ```
 web: cd apps/wall_web && MIX_ENV=prod mix phx.server
 ```
+
+#### Configuration for Heroku
+
+Tell phoenix to use Heroku URL and enforce SSL in `config/prod.exs`:
+
+```
+url: [scheme: "https", host: "communitywall.herokuapp.com", port: 443],
+force_ssl: [rewrite_on: [:x_forwarded_proto]]
+
+```
+
+#### Add Environment Variables in Heroku
+
+You can add env variables using Heroku Toolbelt or via Heroku Web Dashboard. We need to create `SECRET_KEY_BASE` config based on random string. We can generate using `mix phx.gen.secret`.
+
+```
+$ cd apps/wall_web/
+$ mix phx.gen.secret
+xvafzY4y01jYuzLm3ecJqo008dVnU3CN4f+MamNd1Zue4pXvfvUjbiXT8akaIF53
+```
+
+Copy that and set it in Heroku
+
+```
+$ heroku config:set SECRET_KEY_BASE="xvafzY4y01jYuzLm3ecJqo008dVnU3CN4f+MamNd1Zue4pXvfvUjbiXT8akaIF53"
+Setting config vars and restarting mysterious-meadow-6277... done, v3
+SECRET_KEY_BASE: xvafzY4y01jYuzLm3ecJqo008dVnU3CN4f+MamNd1Zue4pXvfvUjbiXT8akaIF53
+```
+
+Then you have to set two env variables needed for the app: `AUTO_REFRESH_MILISECONDS` and `HASHTAG` as seen as in [.env.example](./.env.example).
+
+```
+$ heroku config:set AUTO_REFRESH_MILISECONDS=50000
+$ heroku config:set HASHTAG=devcjakarta
+```
+
+### Deployment Time
+
+Commit all our changes.
+
+```
+$ git add config/prod.exs
+$ git add elixir_buildpack.config
+$ git add phoenix_static_buildpack.config
+$ git commit -m "Use production config from Heroku ENV variables"
+```
+
+And deploy!
+
+```
+$ git push heroku master
+```
+
+## Build With
+
+* [Elixir](https://elixir-lang.org)
+* [Phoenix](http://www.phoenixframework.org)
+* [Tailwind CSS](https://tailwindcss.com)
+* [Purge CSS](https://www.purgecss.com)
+* JavaScript
+
+## Contributing
+
+Please send me some [ issues ](https://github.com/rizafahmi/community_wall/issues), or even better [ some PR ](https://github.com/rizafahmi/community_wall/pulls)! This project is a long way from finish. We need your contributions.
+
+## License
+
+This project is licensed under an MIT License - see the [LICENSE.md](./LICENSE.md) file for details.
+
+## Donation
+
+* [ PayPal ](https://www.paypal.com/paypalme2/rizafahmi)
+* [ KaryaKarsa ](https://karyakarsa.com/rizafahmi/) (For 🇮🇩 Indonesia only)
