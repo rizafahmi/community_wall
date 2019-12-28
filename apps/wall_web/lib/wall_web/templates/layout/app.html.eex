@@ -16,11 +16,13 @@
     <header>
       <nav class="flex items-center justify-between flex-wrap bg-blue-700 p-6 shadow-lg">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
-          <%= if assigns[:hashtag] do %>
-            <span class="font-semibold text-xl tracking-tight uppercase"><%= get_title(@hashtag) %></span>
-          <% else %>
-            <span class="font-semibold text-xl tracking-tight">Community Wall </span>
-          <% end %>
+          <a href="/">
+            <%= if assigns[:hashtag] do %>
+              <span class="font-semibold text-xl tracking-tight uppercase"><%= get_title(@hashtag) %></span>
+            <% else %>
+              <span class="font-semibold text-xl tracking-tight">Community Wall </span>
+            <% end %>
+          </a>
         </div>
         <div>
           <button id="refresh-button" onClick="window.location.reload();" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 lg:mt-0">🔄 Refresh</button>
