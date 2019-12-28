@@ -32,10 +32,21 @@
     <main role="main" class="container mx-auto my-2">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
       <%= render @view_module, @view_template, assigns %>
+
       <a class="github-fork-ribbon right-bottom fixed" href="https://github.com/rizafahmi/community_wall" data-ribbon="Fork me on GitHub" target="_blank" ref="noopener" title="Fork me on GitHub">Fork me on GitHub</a>
     </main>
     <script async type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+      <script>
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/sw.js').then(function(registration) {
+            console.log(`ServiceWorker registration success with scope ${registration.scope}`);
+          }).catch(function (err) {
+            console.error(`ServiceWorker registration failed: ${err}`);
+          })
+        }
+      </script>
     <%= if assigns[:refresh_every] do %>
       <script async>
         window.setTimeout(function () {
