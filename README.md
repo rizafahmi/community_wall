@@ -57,7 +57,7 @@ I used PaaS [Heroku](https://heroku.com) to deploy [the demo app](https://commun
 
 ### Heroku
 
-You can easily follow guide provided by [phoenix framework](https://hexdocs.pm/phoenix/heroku.html#content) with small difference because we use [Elixir Umbrella Project](https://elixir-lang.org/getting-started/mix-otp/dependencies-and-umbrella-projects.html). Everything already provided over [here](./phoenix_static_buildpack.config).
+You can easily follow guide provided by [phoenix framework](https://hexdocs.pm/phoenix/heroku.html#content) with small difference because we use [Elixir Umbrella Project](https://elixir-lang.org/getting-started/mix-otp/dependencies-and-umbrella-projects.html). Everything already provided over [here](./phoenix_static_buildpack.config) and [Procfile](./Procfile)
 
 #### Creating Heroku Application
 
@@ -70,3 +70,23 @@ Setting buildpack to hashnuke/elixir... done
 https://mysterious-meadow-6277.herokuapp.com/ | https://git.heroku.com/mysterious-meadow-6277.git
 ```
 > Note: the name of the Heroku application is the random string after "Creating" in the output above (mysterious-meadow-6277). This will be unique, so expect to see a different name from "mysterious-meadow-6277".
+
+
+#### Adding the Phoenix Static Buildpack
+
+We need to compile static assets for a successful Phoenix deployment. The [ Phoenix static buildpack ](https://github.com/gjaldon/heroku-buildpack-phoenix-static) can take care of that for us, so let's add it now.
+
+```
+$ heroku buildpacks:add https://github.com/gjaldon/heroku-buildpack-phoenix-static.git
+Buildpack added. Next release on mysterious-meadow-6277 will use:
+  1. https://github.com/HashNuke/heroku-buildpack-elixir.git
+  2. https://github.com/gjaldon/heroku-buildpack-phoenix-static.git
+```
+
+We use this configuration: [ phoenix_static_buildpack.config ](./phoenix_static_buildpack.config).
+
+And we use [Procfile](./Procfile).
+
+```
+web: cd apps/wall_web && MIX_ENV=prod mix phx.server
+```
