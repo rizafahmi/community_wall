@@ -9,6 +9,7 @@
     <% else %>
       <title>Community Wall</title>
     <% end %>
+    <meta name="description" content="Community wall helps you, community leader to display Instagram images, Tweets (coming soon) on any digital service to increase engagement and drive conversions.">
     <link defer rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
     <link defer rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
@@ -35,7 +36,7 @@
 
       <%= render @view_module, @view_template, assigns %>
 
-      <a class="github-fork-ribbon right-bottom fixed" href="https://github.com/rizafahmi/community_wall" data-ribbon="Fork me on GitHub" target="_blank" ref="noopener" title="Fork me on GitHub">Fork me on GitHub</a>
+      <a class="github-fork-ribbon right-bottom fixed" href="https://github.com/rizafahmi/community_wall" data-ribbon="Fork me on GitHub" target="_blank" ref="noopener" title="Fork me on GitHub" rel="noopener">Fork me on GitHub</a>
     </main>
     <script async type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
       <script>
