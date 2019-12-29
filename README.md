@@ -155,6 +155,8 @@ $ git push heroku master
 
 Please send me some [ issues ](https://github.com/rizafahmi/community_wall/issues), or even better [ some PR ](https://github.com/rizafahmi/community_wall/pulls)! This project is a long way from finish. We need your contributions.
 
+For starter, this app still using traditional request response application. If you want to build client side app, and can commit your time, just let me know. I'll create the backend API.
+
 ## License
 
 This project is licensed under an MIT License - see the [LICENSE.md](./LICENSE.md) file for details.
