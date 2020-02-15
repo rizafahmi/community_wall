@@ -30,7 +30,6 @@ Copy `.env.example` to `.env` and add some configuration such as below
 
 ```
 export AUTO_REFRESH_MILISECONDS=50000
-export HASHTAG=devcjakarta
 ```
 
 Source it to export all variables into your environment variable.
@@ -123,7 +122,6 @@ Then you have to set two env variables needed for the app: `AUTO_REFRESH_MILISEC
 
 ```
 $ heroku config:set AUTO_REFRESH_MILISECONDS=50000
-$ heroku config:set HASHTAG=devcjakarta
 ```
 
 ### Deployment Time
