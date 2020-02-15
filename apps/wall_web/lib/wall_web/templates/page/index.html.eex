@@ -1,20 +1,4 @@
-<h3 class="bg-white p-4 mx-2 rounded shadow-md instruction">Kirim foto dengan teman di lokasi acara ke <span class="instagram-badge">Instagram</span> dengan hashtag <span class="hashtag">#<%= @hashtag %></h3>
-<div class="grid min-h-screen items-center justify-center">
-  <%= for edge <- @edges do %>
-    <div class="bg-white rounded-lg border m-2 overflow-hidden">
-      <div class="image-container">
-        <img class="w-full" src="<%= show_image(edge) %>" alt="<%= show_text(edge) %>">
-      </div>
-      <div class="p-6 hidden caption">
-        <span class="instagram-badge">Instagram</span>
-        <p class=""><%= show_text(edge) %></p>
-        <!-- HASHTAGS -->
-        <!-- div class="px-6 py-4">
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2">#photography</span>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2">#travel</span>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 font-semibold text-gray-700 mr-2">#winter</span>
-        </div -->
-      </div>
-    </div>
-  <% end %>
+<div class="min-h-screen items-center justify-center">
+  <h1 class="text-3xl">Selamat datang di Community Wall</h1>
+  <p>Untuk menggunakan, silakan menuju ke halaman dengan hashtag yang ingin dimonitor, misalnya: <a class="underline" href="/devcjakarta">/devcjakarta</a> atau <a class="underline" href="/jakartajs">/jakartajs</a>. Kemudian instruksikan audience untuk mengirimkan foto ke instagram dengan hashtag yang sama.</p>
 </div>
